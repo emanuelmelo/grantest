@@ -1,14 +1,35 @@
 version: '3'
 services:
-   app:
-        container_name: granfront
-        build:
-            context: .
-            dockerfile: frontend/Dockerfile
-        volumes:
-            - '.:/app'
-            - '/app/node_modules'
-        ports:
-            - '3001:3000'
-        environment:
-            - NODE_ENV=development
+    webapp-service:
+      container_name: gran_front
+      build:
+          context: .
+          dockerfile: frontend/Dockerfile
+      volumes:
+          - '.:/app'
+          - '/app/node_modules'
+      ports:
+          - '4560:3000'
+      environment:
+          - NODE_ENV=development
+      networks:
+          - gran_network
+
+    database-service:
+      image: postgres
+      container_name: gran_database
+      restart: always
+      environment:
+          POSTGRES_PASSWORD: example
+      ports:
+          - 5432:5432
+      volumes:
+          - ./database/docker-data/postgres:/var/lib/postgresql/data
+          - ./database:/docker-entrypoint-initdb.d
+      networks:
+          - gran_network
+
+    networks:
+       gran_network:
+          name: gran_network
+          driver: bridge
