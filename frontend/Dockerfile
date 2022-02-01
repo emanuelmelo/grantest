@@ -1,10 +1,10 @@
-FROM node:13-alpine
+FROM node
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
-COPY /frontend/package.json /app/package.json
-RUN npm set strict-ssl false
-RUN npm install -g
-RUN npm install react-scripts -g
+COPY package.json /app/package.json
+
+RUN npm install
+RUN npm install react-scripts
 
 CMD ["npm", "start"]
