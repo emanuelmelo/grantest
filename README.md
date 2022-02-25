@@ -1,2 +1,2 @@
-# grantest
-Repositorio criado para armazenar os codigos fontes do teste para o GranCursos
+# Estudo de codigo
+Repositorio criado para estudo de tecnologias REACT e Symfony
