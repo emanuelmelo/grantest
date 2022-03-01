@@ -1,0 +1,11 @@
+@keyApp = ?keyApp=oCIQKlWEIDmUsMdaTiW4NojvB5frfFvr
+@baseUrl = http://localhost:8000
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTU5NDE2MTk5NH0.bLT6-t-BBVOQMjmJwts2iCAda0h5TxKhm91GrgPgbBo
+
+### ----------------------------------------------------------------
+### List
+
+GET {{baseUrl}}/teste
+Content-Type: application/json
+# Authorization: Bearer {{accessToken}}
+

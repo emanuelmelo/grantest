@@ -5,3 +5,8 @@ controllers:
 kernel:
     resource: ../src/Kernel.php
     type: annotation
+
+
+api:
+    path: /test
+    controller: App\Controller\TestController::test
