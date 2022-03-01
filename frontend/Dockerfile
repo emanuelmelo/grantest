@@ -1,16 +1,15 @@
-FROM node
+FROM node:alpine
 
-WORKDIR /app
-ENV PATH /app/node_modules/.bin:$PATH
+RUN mkdir /usr/app
 
-COPY package.json ./
-COPY package-lock.json ./
+COPY package.json yarn.lock ./
 
-RUN npm config set strict-ssl false
-RUN npm install
-RUN npm install react-scripts -g
+RUN yarn install --production
 
-RUN mkdir -p node_modules/.cache && chmod -R 777 node_modules/.cache
 COPY . ./
 
-CMD ["npm", "start"]
+RUN yarn build
+
+EXPOSE 3000
+
+CMD ["yarn", "start"]
